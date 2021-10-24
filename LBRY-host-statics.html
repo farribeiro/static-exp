@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+        <html>
+          <meta charset="utf-8" />
+          <style>
+           canvas {
+            margin: 0;
+            position: relative;
+            left: 50%;
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+                    }
+          </style>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+          <body>
+            <canvas id="dataByDate"style="max-width:1200px"></canvas>
+            <canvas id="mostHostedByFile"style="max-width:1200px;"></canvas>
+            <canvas id="mostHostedByChannel"style="max-width:1200px;"></canvas>
+            <canvas id="hostedToday"style="max-width:1200px;"></canvas>
+            <script>
+             var days={'2021-06-15': 2.097152, '2021-06-20': 30.853136, '2021-07-08': 0.003394, '2021-07-13': 26.658832, '2021-08-06': 6.29432, '2021-10-18': 33.903648, '2021-10-21': 0.01765, '2021-10-22': 39.845888, '2021-10-24': 0.006078};
+             new Chart("dataByDate",{
+             type:"bar",
+             data:{
+              labels:Object.keys(days),
+              datasets:[{
+                backgroundColor:"green",
+                data:Object.values(days)}]},
+              options:{legend:{display:false}, title:{display:true,text:"Known hosted data in MB. Total: 139.68MB "}}});
+
+             var files={'@Graphy: [3D Animation] Save Odysee': 59.60912, '@odyseebr: +500 Canais da Comunidade OdyseeBR !': 39.851425, 'Unknown channel: Unknown files': 33.921298, '@odyseebr: Playlists na Odysee': 6.29432, '@lbry: Levels on Odysee 🕹️': 0.003394, '@odyseebr: EM BREVE: Bitcoin na Odysee': 0.000541};
+             new Chart("mostHostedByFile",{
+             type:"horizontalBar",
+             data:{
+              labels:Object.keys(files),
+              datasets:[{
+                backgroundColor:"green",
+                data:Object.values(files)}]},
+              options:{legend:{display:false},responsive: true, title:{display:true,text:"6 most hosted files (>0MB)"}}});
+
+             var channels={'@Graphy': 59.60912, '@odyseebr': 46.146286, 'Unknown Channel': 33.921298, '@lbry': 0.003394};
+             new Chart("mostHostedByChannel",{
+             type:"horizontalBar",
+             data:{
+              labels:Object.keys(channels),
+              datasets:[{
+                backgroundColor:"green",
+                data:Object.values(channels)}]},
+              options:{legend:{display:false},responsive: true, title:{display:true,text:"4 most hosted channels (>0MB)"}}});
+
+             var files_today={'@odyseebr: +500 Canais da Comunidade OdyseeBR !': 0.005537, '@odyseebr: EM BREVE: Bitcoin na Odysee': 0.000541};
+             new Chart("hostedToday",{
+             type:"horizontalBar",
+             data:{
+              labels:Object.keys(files_today),
+              datasets:[{
+                backgroundColor:"green",
+                data:Object.values(files_today)}]},
+              options:{legend:{display:false},responsive: true, title:{display:true, text:" Files hosted today in MB. Total: 0.01MB"}}});
+            </script>
+          </body>
+        </html>
