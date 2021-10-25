@@ -207,6 +207,7 @@ output_file = "LBRY-host-statics.html"
 f = open(output_file, 'w')
 f.write("""<!DOCTYPE html>
         <html>
+          <meta charset="utf-8"/>
           <style>
            canvas {{
             margin: 0;
