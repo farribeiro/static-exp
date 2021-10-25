@@ -155,10 +155,10 @@ for blob in blobs:
           files_today["%s: %s" % (channel, title)] += blob.size
         except KeyError:
           files_today["%s: %s" % (channel, title)] = blob.size
-        try:
-          total_today = days[str(Date.today())] / 1000000
-        except KeyError:
-          total_today = 0
+try:
+  total_today = days[str(Date.today())] / 1000000
+except KeyError:
+  total_today = 0
 
 files = {}
 for blob in blobs:
